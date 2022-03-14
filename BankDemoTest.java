@@ -18,7 +18,6 @@ public class BankDemoTest {
                 System.out.println("Enter deposit amount: ");
                 BigDecimal depositValue = reader.nextBigDecimal();
                 account1.deposit(depositValue);
-                System.out.println(account1.getBalance());
 
                 System.out.println("Enter withdraw amount: ");
                 BigDecimal withdrawValue = reader.nextBigDecimal();
