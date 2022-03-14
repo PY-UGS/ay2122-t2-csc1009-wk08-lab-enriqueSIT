@@ -1,8 +1,6 @@
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import javax.naming.InsufficientResourcesException;
-
 public class CheckingAccount {
 
     private String accountHolder;
