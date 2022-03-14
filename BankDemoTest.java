@@ -19,21 +19,32 @@ public class BankDemoTest {
                 BigDecimal depositValue = reader.nextBigDecimal();
                 account1.deposit(depositValue);
 
+            } catch (InputMismatchException e) {
+                reader.next();
+                flag = true;
+                System.out.println("Invalid deposit input! Please key in a valid number. ");
+                // e.printStackTrace();
+            }
+        } while (flag == true);
+
+        do {
+            try {
+                flag = false;
                 System.out.println("Enter withdraw amount: ");
                 BigDecimal withdrawValue = reader.nextBigDecimal();
                 account1.withdraw(withdrawValue);
-
                 System.out.println("The balance after withdraw is: " + account1.getBalance());
-                reader.close();
 
             } catch (InsufficientFundsException e) {
                 System.out.println("Sorry, but your account is short by: " + e.getAmount());
             } catch (InputMismatchException e) {
                 reader.next();
                 flag = true;
-                System.out.println("Invalid input! Please key in a valid number. ");
+                System.out.println("Invalid withdrawal input! Please key in a valid number. ");
                 // e.printStackTrace();
             }
         } while (flag == true);
+
+        reader.close();
     }
 }

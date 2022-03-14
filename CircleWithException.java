@@ -2,20 +2,20 @@
 public class CircleWithException extends GeometricObject {
 
     public static void main(String[] args) {
-        CircleWithException circle = new CircleWithException(100);
-        System.out.println("Circle properties:");
-        System.out.println("The radius is " + circle.getRadius());
+        System.out.println("Circle1 test:");
+        CircleWithException circle1 = new CircleWithException(100);
+        System.out.println("The radius is " + circle1.getRadius());
         try {
-            System.out.println("The area is " + circle.getArea());
+            System.out.println("The area is " + circle1.getArea());
             // } catch (PropertyLimitException e) {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        CircleWithException circle1 = new CircleWithException(-11);
-        System.out.println("Circle1 properties:");
-        System.out.println("The radius is " + circle1.getRadius());
+        System.out.println("Circle1 test:");
+        CircleWithException circle2 = new CircleWithException(-11);
+        System.out.println("The radius is " + circle2.getRadius());
         try {
-            System.out.println("The area is " + circle1.getArea());
+            System.out.println("The area is " + circle2.getArea());
             // } catch (PropertyLimitException e) {
         } catch (Exception e) {
             System.out.println(e.getMessage());
