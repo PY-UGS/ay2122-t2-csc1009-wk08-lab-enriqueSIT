@@ -42,7 +42,9 @@ public class CheckingAccount {
         balance = new BigDecimal(INITIAL_TOTAL);
     }
 
-    public void deposit(BigDecimal value) {
+    public void deposit(BigDecimal value) throws NumberFormatException {
+        if (value.compareTo(BigDecimal.ZERO) <= 0)
+            throw new NumberFormatException("Value must be positive!");
         balance = balance.add(value);
     }
 

@@ -1,25 +1,36 @@
+import java.util.Scanner;
 
 public class CircleWithException extends GeometricObject {
 
     public static void main(String[] args) {
-        System.out.println("Circle1 test:");
-        CircleWithException circle1 = new CircleWithException(100);
-        System.out.println("The radius is " + circle1.getRadius());
-        try {
-            System.out.println("The area is " + circle1.getArea());
-            // } catch (PropertyLimitException e) {
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("Circle1 test:");
-        CircleWithException circle2 = new CircleWithException(-11);
-        System.out.println("The radius is " + circle2.getRadius());
-        try {
-            System.out.println("The area is " + circle2.getArea());
-            // } catch (PropertyLimitException e) {
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+        boolean flag = false;
+
+        Scanner reader = new Scanner(System.in);
+
+        do {
+            try {
+                flag = false;
+                System.out.println("Enter radius: ");
+                Double radius = reader.nextDouble();
+
+                System.out.println("Circle1 test:");
+                CircleWithException circle1 = new CircleWithException(radius);
+                System.out.println("The radius is " + circle1.getRadius());
+                System.out.println("The area is " + circle1.getArea());
+
+            } catch (IllegalArgumentException e) {
+                reader.next();
+                flag = true;
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                reader.next();
+                flag = true;
+                System.out.println(e.getMessage());
+            }
+        } while (flag == true);
+
+        reader.close();
     }
 
     // #region Constructors
@@ -49,7 +60,7 @@ public class CircleWithException extends GeometricObject {
         return radius;
     }
 
-    public void setRadius(double radius) {
+    public void setRadius(double radius) throws IllegalArgumentException {
         if (radius <= 0)
             throw new IllegalArgumentException("Given radius must be a positive value!");
         this.radius = radius;

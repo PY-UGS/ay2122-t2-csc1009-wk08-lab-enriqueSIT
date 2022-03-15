@@ -19,6 +19,10 @@ public class BankDemoTest {
                 BigDecimal depositValue = reader.nextBigDecimal();
                 account1.deposit(depositValue);
 
+            } catch (NumberFormatException e) {
+                reader.next();
+                flag = true;
+                System.out.println(e.getMessage());
             } catch (InputMismatchException e) {
                 reader.next();
                 flag = true;
